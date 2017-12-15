@@ -1,0 +1,84 @@
+<ion-menu side="left" [content]="mycontent">
+
+  <ion-content padding>
+    <ion-list>
+      <button ion-item menuClose (click)="openPage('homePage')">
+                Home
+            </button>
+      <button ion-item menuClose (click)="openPage('AddPage')">
+                Traffic Details
+            </button>
+      <button ion-item menuClose (click)="openPage(dogsPage)">
+                Equipments
+            </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
+
+
+
+<ion-header>
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="card-background-page">
+     <button class="add" ion-button item-right icon-right margin-bottom color="primary" (click)="addCharacter()">
+            Add a character
+            <ion-icon name="add"></ion-icon>
+      </button>
+  <!-- old code for showing all docs
+  <ion-item>
+    <button class="add" ion-button item-right icon-right margin-bottom color="primary" (click)="addCharacter()">
+            Add a character
+            <ion-icon name="add"></ion-icon>
+      </button>
+  </ion-item>
+
+  <div *ngIf="hasComics">
+    <ion-list>
+
+      <ion-item *ngFor="let comic of comics">
+        <ion-thumbnail item-left>
+          <img [src]="comic.image">
+        </ion-thumbnail>
+        <h2>{{ comic.station }} </h2>
+        <h2>{{ comic.traffic }} </h2>
+        <button ion-button clear item-right (click)="viewCharacter({'key':comic.id, 'rev':comic.rev })">
+                  View
+            </button>
+      </ion-item>
+
+    </ion-list>
+  </div>-->
+  <button ion-button item-right color="primary" (click)="displayStationsByHrno('200902801')">
+                  show stations
+            </button>
+
+  <div *ngIf="hasStations">
+
+    <h1>Welcome 200903801 </h1>
+    <ion-card *ngFor="let station of stationNames">
+
+      <img src="assets/imgs/10Glogo.png" />
+      <div class="card-title">DTS {{ station.name }}</div>
+      <div class="card-subtitle"> Total Traffic working : </div>
+      <button ion-button item-right color="primary" (click)="openPage('TrafficPage', {'station':station.name })">
+                  show traffic
+            </button>
+    </ion-card>
+  </div>
+
+
+</ion-content>
